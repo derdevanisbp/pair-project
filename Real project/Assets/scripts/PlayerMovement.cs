@@ -4,11 +4,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;  // Movement speed
     public float jumpForce = 10f; // Force applied for jumping
-    public int maxJumpCount = 2; // Maximum number of jumps
+    public int maxJumpCount = 2;   // Maximum number of jumps
 
     private Rigidbody2D rb;
-    private int jumpCount; // Current number of jumps left
-    private bool isGrounded; // To check if player is on the ground
+    private int jumpCount;          // Current number of jumps left
+    private bool isGrounded;        // To check if player is on the ground
+
+    // Define scale values
+    private float scaleX = 0.372727692f; // Scale value for right-facing
+    private float scaleY = 0.372727692f; // Scale value for y-axis (constant)
 
     void Start()
     {
@@ -37,6 +41,16 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        // Flip character based on movement direction
+        if (moveX > 0)
+        {
+            transform.localScale = new Vector3(scaleX, scaleY, 1); // Face right
+        }
+        else if (moveX < 0)
+        {
+            transform.localScale = new Vector3(-scaleX, scaleY, 1); // Face left
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -61,9 +75,6 @@ public class PlayerMovement : MonoBehaviour
     private bool CheckIfGrounded()
     {
         // Simple ground check; can be replaced with a more robust method if needed
-        // For example, using a Physics2D.OverlapCircle or similar approach
         return isGrounded;
     }
 }
-
-
