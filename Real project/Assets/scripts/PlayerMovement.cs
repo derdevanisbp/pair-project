@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;        // To check if player is on the ground
 
     // Define scale values
-    private float scaleX = 0.372727692f; // Scale value for right-facing
-    private float scaleY = 0.372727692f; // Scale value for y-axis (constant)
+    private float scaleX = 0.5f; // Scale value for right-facing
+    private float scaleY = 0.5f; // Scale value for y-axis (constant)
 
     void Start()
     {
